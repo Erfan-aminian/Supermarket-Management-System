@@ -1,10 +1,15 @@
 namespace Supermarket
 {
-    public partial class Form1 : Form
+    public partial class Formpassword : Form
     {
-        public Form1()
+        public Formpassword()
         {
             InitializeComponent();
+        }
+
+        private void labelUsername_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
