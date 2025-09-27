@@ -1,6 +1,6 @@
 ﻿namespace Supermarket
 {
-    partial class Formpassword
+    partial class FormLogin
     {
         /// <summary>
         ///  Required designer variable.
@@ -39,18 +39,17 @@
             // 
             labelUsername.AutoSize = true;
             labelUsername.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            labelUsername.Location = new Point(211, 116);
+            labelUsername.Location = new Point(179, 130);
             labelUsername.Name = "labelUsername";
             labelUsername.Size = new Size(152, 38);
             labelUsername.TabIndex = 0;
             labelUsername.Text = "Username:";
-            labelUsername.Click += labelUsername_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.Location = new Point(215, 195);
+            label2.Location = new Point(183, 209);
             label2.Name = "label2";
             label2.Size = new Size(145, 38);
             label2.TabIndex = 1;
@@ -58,14 +57,14 @@
             // 
             // textUsername
             // 
-            textUsername.Location = new Point(381, 116);
+            textUsername.Location = new Point(349, 130);
             textUsername.Name = "textUsername";
             textUsername.Size = new Size(263, 27);
             textUsername.TabIndex = 2;
             // 
             // textPassword
             // 
-            textPassword.Location = new Point(381, 206);
+            textPassword.Location = new Point(349, 220);
             textPassword.Name = "textPassword";
             textPassword.Size = new Size(263, 27);
             textPassword.TabIndex = 3;
@@ -80,8 +79,9 @@
             buttonLogin.TabIndex = 4;
             buttonLogin.Text = "Login";
             buttonLogin.UseVisualStyleBackColor = true;
+            buttonLogin.Click += buttonLogin_Click;
             // 
-            // Formpassword
+            // FormLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -91,8 +91,8 @@
             Controls.Add(textUsername);
             Controls.Add(label2);
             Controls.Add(labelUsername);
-            Name = "Formpassword";
-            Text = "Form1";
+            Name = "FormLogin";
+            Text = "Login";
             ResumeLayout(false);
             PerformLayout();
         }
