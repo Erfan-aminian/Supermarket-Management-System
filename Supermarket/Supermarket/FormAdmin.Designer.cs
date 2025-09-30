@@ -29,7 +29,19 @@
         private void InitializeComponent()
         {
             tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
+            tabPageProduct = new TabPage();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            textBoxPrice = new TextBox();
+            textBoxName = new TextBox();
+            buttonRefresh0 = new Button();
+            buttonDelete0 = new Button();
+            buttonUpdate0 = new Button();
+            buttonAdd0 = new Button();
+            textBoxCategoryId = new TextBox();
+            label1 = new Label();
+            dataGridViewProduct = new DataGridView();
             Category = new TabPage();
             textBoxCategory = new TextBox();
             labelCategory = new Label();
@@ -41,13 +53,15 @@
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
             tabControl1.SuspendLayout();
+            tabPageProduct.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProduct).BeginInit();
             Category.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCategory).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPageProduct);
             tabControl1.Controls.Add(Category);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
@@ -58,16 +72,133 @@
             tabControl1.Size = new Size(941, 523);
             tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // tabPageProduct
             // 
-            tabPage1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tabPage1.Location = new Point(4, 29);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(933, 490);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Products";
-            tabPage1.UseVisualStyleBackColor = true;
+            tabPageProduct.Controls.Add(label4);
+            tabPageProduct.Controls.Add(label3);
+            tabPageProduct.Controls.Add(label2);
+            tabPageProduct.Controls.Add(textBoxPrice);
+            tabPageProduct.Controls.Add(textBoxName);
+            tabPageProduct.Controls.Add(buttonRefresh0);
+            tabPageProduct.Controls.Add(buttonDelete0);
+            tabPageProduct.Controls.Add(buttonUpdate0);
+            tabPageProduct.Controls.Add(buttonAdd0);
+            tabPageProduct.Controls.Add(textBoxCategoryId);
+            tabPageProduct.Controls.Add(label1);
+            tabPageProduct.Controls.Add(dataGridViewProduct);
+            tabPageProduct.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tabPageProduct.Location = new Point(4, 29);
+            tabPageProduct.Name = "tabPageProduct";
+            tabPageProduct.Padding = new Padding(3);
+            tabPageProduct.Size = new Size(933, 490);
+            tabPageProduct.TabIndex = 0;
+            tabPageProduct.Text = "Products";
+            tabPageProduct.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(583, 295);
+            label4.Name = "label4";
+            label4.Size = new Size(54, 28);
+            label4.TabIndex = 11;
+            label4.Text = "Price";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(583, 247);
+            label3.Name = "label3";
+            label3.Size = new Size(64, 28);
+            label3.TabIndex = 10;
+            label3.Text = "Name";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(565, 190);
+            label2.Name = "label2";
+            label2.Size = new Size(114, 28);
+            label2.TabIndex = 9;
+            label2.Text = "Category Id";
+            // 
+            // textBoxPrice
+            // 
+            textBoxPrice.Location = new Point(685, 295);
+            textBoxPrice.Name = "textBoxPrice";
+            textBoxPrice.Size = new Size(231, 34);
+            textBoxPrice.TabIndex = 8;
+            // 
+            // textBoxName
+            // 
+            textBoxName.Location = new Point(685, 244);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(231, 34);
+            textBoxName.TabIndex = 7;
+            // 
+            // buttonRefresh0
+            // 
+            buttonRefresh0.Location = new Point(780, 418);
+            buttonRefresh0.Name = "buttonRefresh0";
+            buttonRefresh0.Size = new Size(110, 50);
+            buttonRefresh0.TabIndex = 6;
+            buttonRefresh0.Text = "Refresh";
+            buttonRefresh0.UseVisualStyleBackColor = true;
+            buttonRefresh0.Click += buttonRefresh0_Click;
+            // 
+            // buttonDelete0
+            // 
+            buttonDelete0.Location = new Point(611, 418);
+            buttonDelete0.Name = "buttonDelete0";
+            buttonDelete0.Size = new Size(110, 50);
+            buttonDelete0.TabIndex = 5;
+            buttonDelete0.Text = "Delete";
+            buttonDelete0.UseVisualStyleBackColor = true;
+            buttonDelete0.Click += buttonDelete0_Click;
+            // 
+            // buttonUpdate0
+            // 
+            buttonUpdate0.Location = new Point(780, 353);
+            buttonUpdate0.Name = "buttonUpdate0";
+            buttonUpdate0.Size = new Size(110, 50);
+            buttonUpdate0.TabIndex = 4;
+            buttonUpdate0.Text = "Update";
+            buttonUpdate0.UseVisualStyleBackColor = true;
+            // 
+            // buttonAdd0
+            // 
+            buttonAdd0.Location = new Point(611, 353);
+            buttonAdd0.Name = "buttonAdd0";
+            buttonAdd0.Size = new Size(110, 50);
+            buttonAdd0.TabIndex = 3;
+            buttonAdd0.Text = "Add";
+            buttonAdd0.UseVisualStyleBackColor = true;
+            buttonAdd0.Click += buttonAdd0_Click;
+            // 
+            // textBoxCategoryId
+            // 
+            textBoxCategoryId.Location = new Point(685, 187);
+            textBoxCategoryId.Name = "textBoxCategoryId";
+            textBoxCategoryId.Size = new Size(231, 34);
+            textBoxCategoryId.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(590, 33);
+            label1.Name = "label1";
+            label1.Size = new Size(65, 28);
+            label1.TabIndex = 1;
+            label1.Text = "label1";
+            // 
+            // dataGridViewProduct
+            // 
+            dataGridViewProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProduct.Location = new Point(3, 6);
+            dataGridViewProduct.Name = "dataGridViewProduct";
+            dataGridViewProduct.RowHeadersWidth = 51;
+            dataGridViewProduct.Size = new Size(552, 478);
+            dataGridViewProduct.TabIndex = 0;
             // 
             // Category
             // 
@@ -189,6 +320,9 @@
             Name = "FormAdmin";
             Text = "FormAdmin";
             tabControl1.ResumeLayout(false);
+            tabPageProduct.ResumeLayout(false);
+            tabPageProduct.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProduct).EndInit();
             Category.ResumeLayout(false);
             Category.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCategory).EndInit();
@@ -198,7 +332,7 @@
         #endregion
 
         private TabControl tabControl1;
-        private TabPage tabPage1;
+        private TabPage tabPageProduct;
         private TabPage tabPage2;
         private TabPage tabPage3;
         private TabPage Category;
@@ -209,5 +343,17 @@
         private Button buttonAdd1;
         private Label labelCategory;
         private TextBox textBoxCategory;
+        private TextBox textBoxCategoryId;
+        private Label label1;
+        private DataGridView dataGridViewProduct;
+        private Button buttonRefresh0;
+        private Button buttonDelete0;
+        private Button buttonUpdate0;
+        private Button buttonAdd0;
+        private TextBox textBoxPrice;
+        private TextBox textBoxName;
+        private Label label4;
+        private Label label3;
+        private Label label2;
     }
 }

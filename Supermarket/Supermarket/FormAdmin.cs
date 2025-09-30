@@ -25,6 +25,7 @@ namespace Supermarket
         {
             // اگر میخوای داده‌ها همون اول لود بشه
             LoadCategoryData();
+            LoadProductsData();
             dataGridViewCategory.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
         }
@@ -51,6 +52,28 @@ namespace Supermarket
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
+        }
+
+        private void LoadProductsData()
+        {
+            string connectionString = @"Server=.;Database=SupermarketDB;Trusted_Connection=True;TrustServerCertificate=True;";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM Products";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridViewProduct.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+
         }
 
         // اگه بخوای فقط وقتی تب Category باز شد داده‌ها لود بشه
@@ -158,14 +181,83 @@ namespace Supermarket
 
                 LoadCategoryData();
                 textBoxCategory.Clear();
-
-
-
-
-
             }
 
         }
+
+        private void buttonRefresh0_Click(object sender, EventArgs e)
+        {
+            LoadProductsData();
+            MessageBox.Show("refresh");
+        }
+
+        private void buttonDelete0_Click(object sender, EventArgs e)
+        {
+            string connectionString = @"Server=.;Database=SupermarketDB;Trusted_Connection=True;TrustServerCertificate=True;";
+            string input = textBoxName.Text.Trim();
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                MessageBox.Show("Please enter ID or Name to delete.");
+                return;
+            }
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                if (int.TryParse(input, out int id))
+                {
+                    cmd.CommandText = "DELETE FROM Category WHERE CategoryId = @Value";
+                    cmd.Parameters.AddWithValue("@Value", id);
+                }
+                else
+                {
+                    cmd.CommandText = "DELETE FROM Category WHERE Name = @Value";
+                    cmd.Parameters.AddWithValue("@Value", input);
+                }
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                    MessageBox.Show("Deleted successfully!");
+                else
+                    MessageBox.Show("No matching record found.");
+
+                LoadProductsData();
+                textBoxName.Clear();
+
+            }
+        }
+
+        private void buttonAdd0_Click(object sender, EventArgs e)
+        {
+            string connectionString = @"Server=.;Database=SupermarketDB;Trusted_Connection=True;TrustServerCertificate=True;";
+            if (string.IsNullOrWhiteSpace(textBoxCategoryId.Text) ||
+                string.IsNullOrWhiteSpace(textBoxName.Text) ||
+                string.IsNullOrWhiteSpace(textBoxPrice.Text))
+            {
+                MessageBox.Show("Please enter CategoryId, Name and Price.");
+                return;
+            }
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO Products (CategoryId, Name, SellPrice) VALUES (@CategoryId, @Name, @SellPrice)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@CategoryId", Convert.ToInt32(textBoxCategoryId.Text));
+                cmd.Parameters.AddWithValue("@Name", textBoxName.Text);
+                cmd.Parameters.AddWithValue("@SellPrice", Convert.ToDecimal(textBoxPrice.Text));
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Product added successfully!");
+            }
+
+            LoadProductsData();
+
+
+        }
+
+        
     }
 }
 
