@@ -33,16 +33,19 @@
             buttonProductAdd = new Button();
             label1 = new Label();
             dataGridViewProducts = new DataGridView();
-            tabPageCart = new TabPage();
+            Cart0 = new TabPage();
+            dataGridViewCart = new DataGridView();
             tabControlCustomer.SuspendLayout();
             Products0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
+            Cart0.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCart).BeginInit();
             SuspendLayout();
             // 
             // tabControlCustomer
             // 
             tabControlCustomer.Controls.Add(Products0);
-            tabControlCustomer.Controls.Add(tabPageCart);
+            tabControlCustomer.Controls.Add(Cart0);
             tabControlCustomer.Location = new Point(12, 12);
             tabControlCustomer.Name = "tabControlCustomer";
             tabControlCustomer.SelectedIndex = 0;
@@ -93,15 +96,25 @@
             dataGridViewProducts.Size = new Size(589, 431);
             dataGridViewProducts.TabIndex = 0;
             // 
-            // tabPageCart
+            // Cart0
             // 
-            tabPageCart.Location = new Point(4, 29);
-            tabPageCart.Name = "tabPageCart";
-            tabPageCart.Padding = new Padding(3);
-            tabPageCart.Size = new Size(871, 437);
-            tabPageCart.TabIndex = 1;
-            tabPageCart.Text = "Cart";
-            tabPageCart.UseVisualStyleBackColor = true;
+            Cart0.Controls.Add(dataGridViewCart);
+            Cart0.Location = new Point(4, 29);
+            Cart0.Name = "Cart0";
+            Cart0.Padding = new Padding(3);
+            Cart0.Size = new Size(871, 437);
+            Cart0.TabIndex = 1;
+            Cart0.Text = "Cart";
+            Cart0.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewCart
+            // 
+            dataGridViewCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCart.Location = new Point(6, 6);
+            dataGridViewCart.Name = "dataGridViewCart";
+            dataGridViewCart.RowHeadersWidth = 51;
+            dataGridViewCart.Size = new Size(859, 425);
+            dataGridViewCart.TabIndex = 0;
             // 
             // FormCustomer
             // 
@@ -115,6 +128,8 @@
             Products0.ResumeLayout(false);
             Products0.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).EndInit();
+            Cart0.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCart).EndInit();
             ResumeLayout(false);
         }
 
@@ -123,8 +138,9 @@
         private TabControl tabControlCustomer;
         private TabPage Products0;
         private DataGridView dataGridViewProducts;
-        private TabPage tabPageCart;
+        private TabPage Cart0;
         private Button buttonProductAdd;
         private Label label1;
+        private DataGridView dataGridViewCart;
     }
 }

@@ -22,6 +22,7 @@ namespace Supermarket
         private void FormCustomer_Load(object sender, EventArgs e)
         {
             LoadProductsData();
+            LoadCartsData();
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -29,6 +30,10 @@ namespace Supermarket
             if (tabControlCustomer.SelectedTab == Products0) // اسم تبت رو درست بذار
             {
                 LoadProductsData();
+            }
+            if (tabControlCustomer.SelectedTab == Cart0) // اسم تبت رو درست بذار
+            {
+                LoadCartsData();
             }
         }
 
@@ -45,6 +50,27 @@ namespace Supermarket
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
                     dataGridViewProducts.DataSource = dt;
+                    //MessageBox.Show("connect !");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+        private void LoadCartsData()
+        {
+            string connectionString = @"Server=.;Database=SupermarketDB;Trusted_Connection=True;TrustServerCertificate=True;";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM Cart";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGridViewCart.DataSource = dt;
                     //MessageBox.Show("connect !");
                 }
                 catch (Exception ex)
